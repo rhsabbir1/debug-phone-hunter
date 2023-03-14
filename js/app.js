@@ -1,36 +1,36 @@
 const searchField = document.getElementById('search-field');
-const loadPhones = async(searchText, dataLimit) =>{
+const loadPhones = async (searchText, dataLimit) => {
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     const res = await fetch(url);
     const data = await res.json();
     displayPhones(data.data, dataLimit);
 }
 
-const displayPhones = (phones, dataLimit) =>{
+const displayPhones = (phones, dataLimit) => {
     const phonesContainer = document.getElementById('phones-container');
     // phonesContainer.textContent = '';
     // display 10 phones only 
     const showAll = document.getElementById('show-all');
-    if(dataLimit && phones.length > 10) {
+    if (dataLimit && phones.length > 10) {
         phones = phones.slice(0, 10);
         showAll.classList.remove('d-none');
     }
-    else{
+    else {
         showAll.classList.add('d-hidden');
     }
-    
+
 
     // display no phones found
     const noPhone = document.getElementById('no-found-message');
-    if(phones.length === 0){
+    if (phones.length === 0) {
         noPhone.classList.remove('d-none');
     }
-    else{
+    else {
         noPhone.classList.add('d-none');
     }
     // display all phones
-    phones.forEach(phone =>{
-        const phoneDiv  = document.createElement('div');
+    phones.forEach(phone => {
+        const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
         phonesContainer.innerHTML = `
         <div class="card p-4">
@@ -49,7 +49,7 @@ const displayPhones = (phones, dataLimit) =>{
     toggleSpinner(false);
 }
 
-const processSearch = (dataLimit) =>{
+const processSearch = (dataLimit) => {
     toggleSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -57,7 +57,7 @@ const processSearch = (dataLimit) =>{
 }
 
 // handle search button click
-document.getElementById('btn-search').addEventListener('click', function(){
+document.getElementById('btn-search').addEventListener('click', function () {
     // start loader
     processSearch(10);
 })
@@ -71,28 +71,28 @@ document.getElementById('search-field').addEventListener('keypress', function (e
 
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
-    if(!isLoading){
+    if (!isLoading) {
         loaderSection.classList.remove('d-none')
     }
-    else{
+    else {
         loaderSection.classList.add('d-none');
     }
 }
 
 
 // not the best way to load show All
-document.getElementById('btn-show-all').addEventListener('click', function(){
+document.getElementById('btn-show-all').addEventListener('click', function () {
     processSearch();
 })
 
-const loadPhoneDetails = async id =>{
-    const url =`www.openapi.programming-hero.com/api/phone/${id}`;
+const loadPhoneDetails = async id => {
+    const url = `www.openapi.programming-hero.com/api/phone/${id}`;
     const res = await fetch(url);
     const data = await res.json();
     displayPhoneDetails(data.data);
 }
 
-const displayPhoneDetails = phone =>{
+const displayPhoneDetails = phone => {
     console.log(phone);
     const modalTitle = document.getElementById('phoneDetailModalLabel');
     modalTitle.innerText = phone.name;
@@ -106,13 +106,13 @@ const displayPhoneDetails = phone =>{
     `
 }
 
-//  Enter even key 
-// searchField.addEventListener("keypress", function(event) {
-//     if (event.key === "Enter") {
-//       event.preventDefault();
-//       document.getElementById("btn-search").click();
-//     }
-//   });
+//   Enter even key 
+searchField.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementById("btn-search").click();
+    }
+});
 
 
 
