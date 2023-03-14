@@ -8,17 +8,17 @@ const loadPhones = async (searchText, dataLimit) => {
 }
 
 const displayPhones = (phones, dataLimit) => {
-    
     const phonesContainer = document.getElementById('phones-container');
-    // phonesContainer.textContent = '';
+    phonesContainer.textContent = '';
     // display 10 phones only 
     const showAll = document.getElementById('show-all');
+
     if (dataLimit && phones.length > 10) {
         phones = phones.slice(0, 10);
-        showAll.classList.remove('d-none');
+        showAll.classList.remove('d-none')
     }
     else {
-        showAll.classList.add('d-hidden');
+        showAll.classList.add('d-none');
     }
 
 
@@ -32,7 +32,6 @@ const displayPhones = (phones, dataLimit) => {
     }
     // display all phones
     phones.forEach(phone => {
-        console.log(phone)
         const phoneDiv = document.createElement('div');
         phoneDiv.classList.add('col');
         phoneDiv.innerHTML = `
@@ -56,8 +55,8 @@ const processSearch = (dataLimit) => {
     toggleSpinner(true);
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    searchField.value = '';
     loadPhones(searchText, dataLimit);
+    // searchField.value = '';
 }
 
 // handle search button click
