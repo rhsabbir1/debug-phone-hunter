@@ -4,9 +4,11 @@ const loadPhones = async (searchText, dataLimit) => {
     const res = await fetch(url);
     const data = await res.json();
     displayPhones(data.data, dataLimit);
+
 }
 
 const displayPhones = (phones, dataLimit) => {
+    
     const phonesContainer = document.getElementById('phones-container');
     // phonesContainer.textContent = '';
     // display 10 phones only 
@@ -72,10 +74,10 @@ document.getElementById('search-field').addEventListener('keypress', function (e
 const toggleSpinner = isLoading => {
     const loaderSection = document.getElementById('loader');
     if (!isLoading) {
-        loaderSection.classList.remove('d-none')
+        loaderSection.classList.add('d-none')
     }
     else {
-        loaderSection.classList.add('d-none');
+        loaderSection.classList.remove('d-none');
     }
 }
 
