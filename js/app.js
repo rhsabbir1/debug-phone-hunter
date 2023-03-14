@@ -1,3 +1,4 @@
+const searchField = document.getElementById('search-field');
 const loadPhones = async(searchText, dataLimit) =>{
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`
     const res = await fetch(url);
@@ -56,7 +57,7 @@ const processSearch = (dataLimit) =>{
 }
 
 // handle search button click
-document.getElementById('#btn-search').addEventListener('click', function(){
+document.getElementById('btn-search').addEventListener('click', function(){
     // start loader
     processSearch(10);
 })
@@ -104,5 +105,16 @@ const displayPhoneDetails = phone =>{
         <p>Sensor: ${phone.mainFeatures.sensors ? phone.mainFeatures.sensors[0] : 'no sensor'}</p>
     `
 }
+
+//  Enter even key 
+// searchField.addEventListener("keypress", function(event) {
+//     if (event.key === "Enter") {
+//       event.preventDefault();
+//       document.getElementById("btn-search").click();
+//     }
+//   });
+
+
+
 
 loadPhones('apple');
