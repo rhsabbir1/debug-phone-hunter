@@ -98,16 +98,16 @@ const loadPhoneDetails = async id => {
 }
 
 const displayPhoneDetails = phone => {
-    console.log(phone)
+   
     const modalTitle = document.getElementById('phoneDetailModalLabel');
     modalTitle.innerText = phone.data.name;
     const phoneDetails = document.getElementById('phone-details');
-    // console.log(phone.mainFeatures.sensors[0]);
+    console.log(phone.data.mainFeatures.storage)
     phoneDetails.innerHTML = `
         <p>Release Date: ${phone.data.releaseDate}</p>
-        <p>Storage: ${phone.mainFeatures}</p>
-        <p>Others: ${phone.others ? phone.others.Bluetooth : 'No Bluetooth Information'}</p>
-        <p>Sensor: ${phone.mainFeatures?.sensors ? phone.mainFeatures.sensors[0] : 'no sensor'}</p>
+        <p>Storage: ${phone.data.mainFeatures ?phone.data.mainFeatures.storage : 'NO DATA'}</p>
+        <p>Others: ${phone.data.others ? phone.data.others.Bluetooth : 'No Bluetooth Information'}</p>
+        <p>Sensor: ${phone.data.mainFeatures?.sensors ? phone.data.mainFeatures.sensors[0] : 'no sensor'}</p>
     `
 }
 

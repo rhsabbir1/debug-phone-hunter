@@ -6,6 +6,6 @@
 // 5. Search is not clearing previous results---(done)
 // 6. picture of the phones are not showing----(Done)
 // 7. Show All button should be hidden after all data is loaded ---(done)
-// 8. Load phone details doesn't display anything
-// 9. Phone details are added on the modal but this is not getting displayed. why?
-// 10. Storage on Modal isn't getting displayed properly
+// 8. Load phone details doesn't display anything --(done)
+// 9. Phone details are added on the modal but this is not getting displayed. why? NOt undestand 
+// 10. Storage on Modal isn't getting displayed properly ---(done)
